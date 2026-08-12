@@ -11,3 +11,7 @@ Very early stage. See the devlog below for where this actually is.
 - **2026-08-10** — Repo scaffolded: pnpm workspace, strict TypeScript base config, ESLint,
   Prettier, Vitest wired up. Nothing runs yet. **Next:** design the data model for a "check"
   and how scoring should work before writing any real audit logic.
+- **2026-08-11** — `@repoguard/core` scaffolded: the `Check`/`CheckResult`/`AuditReport` types,
+  a weighted pass/warn/fail scoring model, and small fs helpers checks will share. Still no
+  actual checks. **Next:** write the first real ones — CI, CODEOWNERS, Dependabot — they're
+  the ones that matter most for the score.
