@@ -15,3 +15,7 @@ Very early stage. See the devlog below for where this actually is.
   a weighted pass/warn/fail scoring model, and small fs helpers checks will share. Still no
   actual checks. **Next:** write the first real ones — CI, CODEOWNERS, Dependabot — they're
   the ones that matter most for the score.
+- **2026-08-12** — Implemented all 9 filesystem-based checks: CI workflow, CodeQL, Dependabot,
+  CODEOWNERS, license, security policy, PR template, issue templates, README quality. All
+  local-only, no GitHub token needed yet. **Next:** these are useless if they're wrong — cover
+  every one with tests before building anything on top of them.
