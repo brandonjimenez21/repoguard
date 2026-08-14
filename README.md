@@ -19,3 +19,6 @@ Very early stage. See the devlog below for where this actually is.
   CODEOWNERS, license, security policy, PR template, issue templates, README quality. All
   local-only, no GitHub token needed yet. **Next:** these are useless if they're wrong — cover
   every one with tests before building anything on top of them.
+- **2026-08-13** — Unit tests for every check plus the scoring aggregator, using temp
+  directories instead of committed fixtures (`makeTempRepo()`). 19 tests, all green. **Next:**
+  stop running this by hand — build the actual CLI.
