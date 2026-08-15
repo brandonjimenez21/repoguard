@@ -1,0 +1,26 @@
+{
+  "name": "repoguard",
+  "version": "0.1.0",
+  "description": "Audits a repository for engineering best practices (CI, security, governance) and prints a health score.",
+  "type": "module",
+  "bin": {
+    "repoguard": "./dist/index.js"
+  },
+  "files": ["dist"],
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@repoguard/core": "workspace:*",
+    "chalk": "^5.3.0",
+    "cli-table3": "^0.6.5",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.9"
+  }
+}

@@ -22,3 +22,7 @@ Very early stage. See the devlog below for where this actually is.
 - **2026-08-13** — Unit tests for every check plus the scoring aggregator, using temp
   directories instead of committed fixtures (`makeTempRepo()`). 19 tests, all green. **Next:**
   stop running this by hand — build the actual CLI.
+- **2026-08-15** — `repoguard` CLI is up: `audit` command with table/json/md output and
+  `--min-score` for CI gating. Ran it against this repo for the first time — scored itself
+  honestly low, since none of the `.github/` files exist yet. **Next:** stop testing this
+  locally only — wire real CI so pushes actually get checked.
