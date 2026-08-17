@@ -29,3 +29,8 @@ Very early stage. See the devlog below for where this actually is.
 - **2026-08-16** — GitHub Actions CI (lint/typecheck/test/build on a Node 18/20 matrix) and a
   CodeQL scanning workflow. **Next:** the actual point of this project — make it audit
   *itself* on every PR instead of just sitting there as a CLI nobody uses in CI.
+- **2026-08-17** — Self-audit workflow: builds the CLI and runs it against this repo on every
+  PR, posting the score as a sticky PR comment and a job summary. Also added the Changesets
+  release pipeline and a composite `action.yml` so this can eventually run as a GitHub Action
+  in *other* repos, not just via npm install. **Next:** the score is still bad because the
+  governance files (CODEOWNERS, Dependabot, templates) don't exist yet — add them.

@@ -1,0 +1,45 @@
+name: 'RepoGuard'
+description: 'Audits a repository for engineering best practices (CI, security, governance, docs) and reports a health score.'
+author: 'your-github-username'
+branding:
+  icon: 'shield'
+  color: 'green'
+
+inputs:
+  path:
+    description: 'Path to the repository to audit'
+    required: false
+    default: '.'
+  format:
+    description: 'Output format: table | json | md'
+    required: false
+    default: 'md'
+  min-score:
+    description: 'Fail the step if the score falls below this percentage (0-100)'
+    required: false
+    default: '0'
+
+outputs:
+  report-path:
+    description: 'Path to the generated report file'
+    value: ${{ steps.audit.outputs.report-path }}
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+
+    - id: audit
+      shell: bash
+      run: |
+        npx --yes repoguard@latest audit \
+          --path "${{ inputs.path }}" \
+          --format "${{ inputs.format }}" \
+          --min-score "${{ inputs.min-score }}" \
+          --out repoguard-report.md
+        echo "report-path=repoguard-report.md" >> "$GITHUB_OUTPUT"
+
+    - shell: bash
+      run: cat repoguard-report.md >> "$GITHUB_STEP_SUMMARY"
