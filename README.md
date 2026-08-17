@@ -26,3 +26,6 @@ Very early stage. See the devlog below for where this actually is.
   `--min-score` for CI gating. Ran it against this repo for the first time — scored itself
   honestly low, since none of the `.github/` files exist yet. **Next:** stop testing this
   locally only — wire real CI so pushes actually get checked.
+- **2026-08-16** — GitHub Actions CI (lint/typecheck/test/build on a Node 18/20 matrix) and a
+  CodeQL scanning workflow. **Next:** the actual point of this project — make it audit
+  *itself* on every PR instead of just sitting there as a CLI nobody uses in CI.
