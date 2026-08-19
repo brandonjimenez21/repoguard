@@ -1,0 +1,7 @@
+# Default owner for everything not matched below.
+# Replace @your-github-username with your actual handle before pushing.
+* @your-github-username
+
+packages/core/ @your-github-username
+packages/cli/  @your-github-username
+.github/       @your-github-username

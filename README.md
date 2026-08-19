@@ -34,3 +34,6 @@ Very early stage. See the devlog below for where this actually is.
   release pipeline and a composite `action.yml` so this can eventually run as a GitHub Action
   in *other* repos, not just via npm install. **Next:** the score is still bad because the
   governance files (CODEOWNERS, Dependabot, templates) don't exist yet — add them.
+- **2026-08-18** — Added CODEOWNERS, `dependabot.yml` (npm + github-actions), PR template, and
+  issue templates. Ran `repoguard audit` against this repo and it finally scores well.
+  **Next:** write the docs a stranger landing on this repo would actually need.

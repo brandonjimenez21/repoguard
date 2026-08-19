@@ -1,0 +1,23 @@
+name: Bug report
+description: Something in RepoGuard behaves incorrectly.
+labels: ['bug']
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect instead?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: repoguard version
+      placeholder: e.g. 0.1.0 (run `repoguard --version`)
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: Command run and, if possible, the repo structure that triggers it.
