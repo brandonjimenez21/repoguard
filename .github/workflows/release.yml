@@ -33,11 +33,23 @@ jobs:
       - run: pnpm build
       - run: pnpm test
 
+      # NPM_TOKEN isn't added until SETUP.md step 6 is done. Without this
+      # guard, changesets/action tries to publish, npm rejects the
+      # unauthenticated request, and the workflow goes red on every push
+      # to main for no reason anyone did wrong.
+      - name: Check for NPM_TOKEN
+        id: npm-token-check
+        run: echo "has-token=${{ secrets.NPM_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
+
       # Opens/updates a "Version Packages" PR when changesets are pending,
       # and publishes to npm once that PR is merged to main.
-      - uses: changesets/action@v1
+      - if: steps.npm-token-check.outputs.has-token == 'true'
+        uses: changesets/action@v1
         with:
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - if: steps.npm-token-check.outputs.has-token != 'true'
+        run: echo "::notice::NPM_TOKEN not configured yet (see SETUP.md step 6) — skipping version/publish."

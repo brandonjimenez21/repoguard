@@ -135,8 +135,15 @@ version numbers.
   well instead of failing its own checks.
 - **2026-08-19** — Full docs pass: README, `ROADMAP.md` (the settings-only checks — branch
   protection, merge queue — that need the GitHub API), `CONTRIBUTING.md`, `SECURITY.md`,
-  `SETUP.md`. Scored the repo against itself end to end: 100/100. **Next:** push to GitHub,
-  work through `SETUP.md`, start turning `ROADMAP.md` into real Issues.
+  `SETUP.md`. Scored the repo against itself end to end: 100/100.
+- **2026-08-19** — Pushed to GitHub. First real CI run failed immediately:
+  `pnpm/action-setup`'s `version: 9` input conflicts with the `packageManager` field in
+  `package.json` (`ERR_PNPM_BAD_PM_VERSION`) — removed the redundant input. Then `Release`
+  failed too, for a legitimate reason this time: no `NPM_TOKEN` secret yet, so
+  `changeset publish` has nothing to auth with. Guarded that step so it skips cleanly instead
+  of going red on every push until `SETUP.md` step 6 is done. **Next:** work through the rest
+  of `SETUP.md` (branch protection, merge queue, environments, Project board), then start
+  turning `ROADMAP.md` into real Issues.
 
 ## License
 
