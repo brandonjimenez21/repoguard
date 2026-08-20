@@ -48,7 +48,7 @@ repoguard audit --min-score 70            # exits 1 if below threshold — use i
 As a GitHub Action, in any repo:
 
 ```yaml
-- uses: your-github-username/repoguard@v1
+- uses: brandonjimenez21/repoguard@v1
   with:
     min-score: '70'
 ```

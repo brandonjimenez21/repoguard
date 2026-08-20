@@ -1,6 +1,6 @@
 name: 'RepoGuard'
 description: 'Audits a repository for engineering best practices (CI, security, governance, docs) and reports a health score.'
-author: 'your-github-username'
+author: 'brandonjimenez21'
 branding:
   icon: 'shield'
   color: 'green'

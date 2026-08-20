@@ -5,17 +5,16 @@ exist as GitHub repo settings — you do these once, from your own account, afte
 
 ## 1. Fix placeholders
 
-- [ ] Replace `@your-github-username` in `.github/CODEOWNERS`
-- [ ] Replace `your-github-username` in `action.yml` (`author:`) and `README.md`
+- [x] Replace `@your-github-username` in `.github/CODEOWNERS` → `@brandonjimenez21`
+- [x] Replace `your-github-username` in `action.yml` (`author:`) and `README.md`
 - [ ] Confirm the name/year in `LICENSE`
 
-## 2. Create and push the repo
+## 2. Push the repo
+
+The repo already exists at `github.com/brandonjimenez21/repoguard`.
 
 ```bash
-git init
-git add .
-git commit -m "chore: scaffold RepoGuard"
-gh repo create repoguard --public --source=. --remote=origin
+git remote add origin https://github.com/brandonjimenez21/repoguard.git
 git push -u origin main
 ```
 
