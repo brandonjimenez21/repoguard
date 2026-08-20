@@ -136,6 +136,18 @@ version numbers.
 - **2026-08-19** — Full docs pass: README, `ROADMAP.md` (the settings-only checks — branch
   protection, merge queue — that need the GitHub API), `CONTRIBUTING.md`, `SECURITY.md`,
   `SETUP.md`. Scored the repo against itself end to end: 100/100.
+- **2026-08-19** — Worked through Dependabot's first batch of 8 PRs by hand instead of
+  bulk-merging. The 5 GitHub Actions version bumps (`pnpm/action-setup`, `actions/setup-node`,
+  `sticky-pull-request-comment`, `actions/checkout`, `codeql-action`) were all safe,
+  one-line diffs — merged. The 3 npm ones weren't: the grouped dev-dependency bump jumped
+  `typescript` to 7.0.2, which `typescript-eslint` doesn't support yet (real upstream lag,
+  not our bug — closed it); `commander@15` and `chalk@6` both hard-require Node 22, which
+  breaks the `node: ">=18.18"` this repo promises and the 18.x/20.x CI matrix actually tests
+  against — ignored both major versions rather than closing blind, so Dependabot can still
+  offer a smaller, compatible bump later. **Real gap found doing this:** nothing in CI
+  actually *runs* the built CLI — `pnpm test` only covers `@repoguard/core`, and `pnpm build`
+  just type-checks — so a Node-version-incompatible dependency in `packages/cli` would pass
+  every check and still break at runtime for anyone on Node 18/20. Tracked in `ROADMAP.md`.
 - **2026-08-19** — Pushed to GitHub. First real CI run failed immediately:
   `pnpm/action-setup`'s `version: 9` input conflicts with the `packageManager` field in
   `package.json` (`ERR_PNPM_BAD_PM_VERSION`) — removed the redundant input. Then `Release`
