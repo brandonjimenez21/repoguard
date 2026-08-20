@@ -18,10 +18,11 @@ pipeline actually *executes* `packages/cli`:
 So a dependency that's fine at the type level but broken at runtime on an older Node version
 would sail through CI green. Fix:
 
-- [ ] Add a CLI smoke test — e.g. `node packages/cli/dist/index.js audit --format json` run
-      against a fixture repo, asserting on exit code and output shape — in `ci.yml`'s matrix so
-      it actually exercises Node 18.x and 20.x, not just `@repoguard/core`
-- [ ] Once that exists, revisit the ignored `commander`/`chalk` major versions — either they
+- [x] Add a CLI smoke test — `packages/cli/scripts/smoke-test.mjs`, wired into `ci.yml` via
+      `pnpm --filter repoguard run smoke` on the existing 18.x/20.x matrix. It runs the built
+      `dist/index.js` against this repo and asserts: `--format json` exits 0 with a well-formed
+      report, `--min-score` above the achieved score exits 1, and an unknown `--format` exits 2.
+- [ ] Now that it exists, revisit the ignored `commander`/`chalk` major versions — either they
       pass for real, or the smoke test explains exactly why not
 
 ## v0.2 — API-backed checks (needs `--token` / `GITHUB_TOKEN`)
