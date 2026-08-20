@@ -22,8 +22,11 @@ would sail through CI green. Fix:
       `pnpm --filter repoguard run smoke` on the existing 18.x/20.x matrix. It runs the built
       `dist/index.js` against this repo and asserts: `--format json` exits 0 with a well-formed
       report, `--min-score` above the achieved score exits 1, and an unknown `--format` exits 2.
-- [ ] Now that it exists, revisit the ignored `commander`/`chalk` major versions — either they
-      pass for real, or the smoke test explains exactly why not
+- [x] Now that it exists, revisit the ignored `commander`/`chalk` major versions. Dependabot's
+      follow-up offer (`commander` → 14.0.3, `engines: >=20`) passed the smoke test for real on
+      both 18.x and 20.x — merged (#10). No new `chalk` PR appeared; the earlier `chalk@6`
+      close still stands. The dev-dependencies group PR (#9) still ships `typescript@7.0.2`,
+      still fails `pnpm lint` (`typescript-eslint does not support TS 7.0`) — closed again.
 
 ## v0.2 — API-backed checks (needs `--token` / `GITHUB_TOKEN`)
 
