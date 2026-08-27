@@ -44,7 +44,7 @@ jobs:
       # Opens/updates a "Version Packages" PR when changesets are pending,
       # and publishes to npm once that PR is merged to main.
       - if: steps.npm-token-check.outputs.has-token == 'true'
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
           publish: pnpm release
         env:
